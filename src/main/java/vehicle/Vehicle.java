@@ -9,12 +9,14 @@ public abstract class Vehicle {
     protected Tyres tyres;
     protected double price;
     protected String colour;
+    protected double damage;
 
     public Vehicle(double price, String colour){
         this.engine = new Engine();
         this.tyres = new Tyres();
         this.price = price;
         this.colour = colour;
+        this.damage = 0;
     }
 
     public double getPrice() {
@@ -25,11 +27,20 @@ public abstract class Vehicle {
         return colour;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public double getDamage() {
+        return damage;
     }
 
-    public void damage(double value){
-        price -= value;
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+
+    public void increasePrice(double increasePrice) {
+        this.price += increasePrice;
+    }
+
+    public void damage(double damageValue){
+        price -= damageValue;
+        damage += damageValue;
     };
 }

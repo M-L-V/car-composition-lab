@@ -77,6 +77,29 @@ public class DealershipTest {
         assertEquals(500.0, customer.getMoney(), 0.01);
     }
 
+    @Test
+    public void canRepairVehicle(){
+        car.damage(100.0);
+        dealership.repair(car);
+        assertEquals(250.5, car.getPrice(), 0.01);
+        assertEquals(900.0, dealership.getTill(), 0.01);
+    }
+
+    @Test
+    public void cannotRepairVehicleNotDamaged(){
+        dealership.repair(car);
+        assertEquals(250.5, car.getPrice(), 0.01);
+        assertEquals(1000.0, dealership.getTill(), 0.01);
+    }
+
+    @Test
+    public void cannotRepairVehicleTooExpensiveDamage(){
+        electricCar.damage(2000.0);
+        dealership.repair(electricCar);
+        assertEquals(1000.50, electricCar.getPrice(), 0.01 );
+        assertEquals(1000.0, dealership.getTill(), 0.01);
+    }
+
 
 
 }

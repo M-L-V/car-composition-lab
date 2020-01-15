@@ -13,6 +13,7 @@ public class CarTest {
         car = new Car(200.50, "pink");
         assertEquals(200.5, car.getPrice(), 0.01);
         assertEquals("pink", car.getColour());
+        assertEquals(0.0, car.getDamage(), 0.01);
     }
 
     @Test
@@ -20,6 +21,7 @@ public class CarTest {
         car = new Car(200.5, "pink");
         car.damage(100.0);
         assertEquals(100.5, car.getPrice(), 0.01);
+        assertEquals(100.0, car.getDamage(), 0.01);
     }
 
 }

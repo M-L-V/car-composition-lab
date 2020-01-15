@@ -34,4 +34,12 @@ public class Dealership {
             till += vehicle.getPrice();
         }
     }
+
+    public void repair(Vehicle vehicle) {
+        if(vehicle.getDamage() != 0 && till >= vehicle.getDamage()){
+            till -= vehicle.getDamage();
+            vehicle.increasePrice(vehicle.getDamage());
+            vehicle.setDamage(0);
+        }
+    }
 }
