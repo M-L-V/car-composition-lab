@@ -1,4 +1,10 @@
 package vehicle.vehicleTypes;
 
-public class HybridCar {
+import vehicle.Vehicle;
+
+public class HybridCar extends Vehicle {
+
+    public HybridCar(double price, String colour) {
+        super(price, colour);
+    }
 }

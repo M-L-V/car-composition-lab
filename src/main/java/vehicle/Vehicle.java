@@ -5,12 +5,12 @@ import vehicle.carParts.Tyres;
 
 public abstract class Vehicle {
 
-    private Engine engine;
-    private Tyres tyres;
-    private double price;
-    private String colour;
+    protected Engine engine;
+    protected Tyres tyres;
+    protected double price;
+    protected String colour;
 
-    public void Vehicle(double price, String colour){
+    public Vehicle(double price, String colour){
         this.engine = new Engine();
         this.tyres = new Tyres();
         this.price = price;
@@ -25,5 +25,7 @@ public abstract class Vehicle {
         return colour;
     }
 
-
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
