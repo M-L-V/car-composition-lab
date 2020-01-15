@@ -19,4 +19,11 @@ public class Dealership {
     public ArrayList<Vehicle> getStock() {
         return stock;
     }
+
+    public void buy(Vehicle vehicle) {
+        if (till >= vehicle.getPrice()){
+            stock.add(vehicle);
+            till -= vehicle.getPrice();
+        }
+    }
 }

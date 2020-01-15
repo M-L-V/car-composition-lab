@@ -18,7 +18,7 @@ public class DealershipTest {
     public void before() {
         dealership = new Dealership(1000.00);
         car = new Car(250.50, "pink");
-        electricCar = new ElectricCar(300.50, "purple");
+        electricCar = new ElectricCar(3000.50, "purple");
     }
 
 
@@ -32,6 +32,19 @@ public class DealershipTest {
         assertEquals(0, dealership.getStock().size());
     }
 
+    @Test
+    public void canBuyVehicle(){
+        dealership.buy(car);
+        assertEquals(1, dealership.getStock().size());
+        assertEquals(749.50, dealership.getTill(), 0.01);
+    }
+
+    @Test
+    public void cannotBuyCar(){
+        dealership.buy(electricCar);
+        assertEquals(0, dealership.getStock().size());
+        assertEquals(1000.0, dealership.getTill(), 0.01);
+    }
 
 
 
