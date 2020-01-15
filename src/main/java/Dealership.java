@@ -26,4 +26,12 @@ public class Dealership {
             till -= vehicle.getPrice();
         }
     }
+
+    public void sell(Vehicle vehicle, Customer customer) {
+        if(stock.contains(vehicle)){
+            customer.buy(vehicle);
+            stock.remove(vehicle);
+            till += vehicle.getPrice();
+        }
+    }
 }

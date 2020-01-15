@@ -12,6 +12,7 @@ public class DealershipTest {
     private Dealership dealership;
     private Vehicle car;
     private Vehicle electricCar;
+    private Customer customer;
 
 
     @Before
@@ -19,6 +20,7 @@ public class DealershipTest {
         dealership = new Dealership(1000.00);
         car = new Car(250.50, "pink");
         electricCar = new ElectricCar(3000.50, "purple");
+        customer = new Customer(500.00);
     }
 
 
@@ -44,6 +46,35 @@ public class DealershipTest {
         dealership.buy(electricCar);
         assertEquals(0, dealership.getStock().size());
         assertEquals(1000.0, dealership.getTill(), 0.01);
+    }
+
+    @Test
+    public void canSellToCustomer(){
+        dealership.buy(car);
+        dealership.sell(car, customer);
+        assertEquals(1000, dealership.getTill(), 0.01);
+        assertEquals(0, dealership.getStock().size());
+        assertEquals(1, customer.getOwnedVehicles().size());
+        assertEquals(249.50, customer.getMoney(), 0.01);
+    }
+
+    @Test
+    public void cannotSellToCustomerNoneExistingCar(){
+        dealership.sell(car, customer);
+        assertEquals(1000, dealership.getTill(), 0.01);
+        assertEquals(0, dealership.getStock().size());
+        assertEquals(0, customer.getOwnedVehicles().size());
+        assertEquals(500.0, customer.getMoney(), 0.01);
+    }
+
+    @Test
+    public void cannotSellToCustomerNotEnoughMoney(){
+        dealership.buy(electricCar);
+        dealership.sell(electricCar, customer);
+        assertEquals(1000, dealership.getTill(), 0.01);
+        assertEquals(0, dealership.getStock().size());
+        assertEquals(0, customer.getOwnedVehicles().size());
+        assertEquals(500.0, customer.getMoney(), 0.01);
     }
 
 
