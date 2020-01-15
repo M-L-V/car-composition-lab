@@ -28,4 +28,8 @@ public abstract class Vehicle {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public void damage(double value){
+        price -= value;
+    };
 }

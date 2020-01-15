@@ -12,7 +12,13 @@ public class ElectricCarTest {
         electricCar = new ElectricCar(300.50, "green");
         assertEquals(300.5, electricCar.getPrice(), 0.01);
         assertEquals("green", electricCar.getColour());
+    }
 
+    @Test
+    public void damageCar(){
+        electricCar = new ElectricCar(200.5, "pink");
+        electricCar.damage(100.0);
+        assertEquals(100.5, electricCar.getPrice(), 0.01);
     }
 
 }

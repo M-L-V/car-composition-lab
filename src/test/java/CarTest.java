@@ -15,4 +15,11 @@ public class CarTest {
         assertEquals("pink", car.getColour());
     }
 
+    @Test
+    public void damageCar(){
+        car = new Car(200.5, "pink");
+        car.damage(100.0);
+        assertEquals(100.5, car.getPrice(), 0.01);
+    }
+
 }
